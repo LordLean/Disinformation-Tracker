@@ -17,6 +17,7 @@ import string
 import nltk
 
 nltk.download("stopwords", quiet=True)
+nltk.download("wordnet", quiet=True)
 # try:
 #   nltk.download("wordnet", quiet=True)
 # except:

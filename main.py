@@ -6,6 +6,7 @@ import pandas as pd
 import random
 import json
 import glob
+import sklearn
 
 from data_collection import get_feedly_data, get_feedparser_data, create_event_dict, keyword_extraction
 

@@ -4,6 +4,7 @@ import streamlit as st
 import json
 import datetime
 from time import mktime
+import sklearn
 
 import feedparser
 

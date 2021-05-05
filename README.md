@@ -1,4 +1,4 @@
-Welcome to the Disinformation Tracking Tool  
+Welcome to the Disinformation Tracking Tool  - [link](https://share.streamlit.io/lordlean/disinformation-tracker/main.py)
 
 Thanks for choosing to use this application. This tool was designed as part of project for an undergraduate computer science degree from the University of Sussex. The goal was to create an application that would allow its users to jump straight into examining the diffusion of news through the Twitter platform.  
 
@@ -6,7 +6,7 @@ Specifically this project targets disinformation (deliberately deceptive false n
 
 Some information to get you started! The three columns below take you through the different parts of the application and provide helpful links to further documentation. 
 
-
+## The Sidebar
 * Controls application + search settings.
 * Upload keys using uploader widget.
     * Twitters keys are essential.
@@ -29,7 +29,7 @@ Some information to get you started! The three columns below take you through th
     * Twitter's standard search [operators](https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/search-operators)
 
 
-
+## Querying
 * This application is built for those using Twitters v1 Standard Search API. The back-end leverages [Tweepy](https://www.tweepy.org/) and is not currently compatiable with the premium and enterprise APIs - to the best of my knowledge.
 * Enter queries in the event search text input.
 * This application performs its search by querying for an initial dataframe using the passed query. All unique links contained within the returned Tweets are then stored and used as URL queries for further Twitter Searches. The distribution of the URL specific searches is the data displayed in the graph visualization.
@@ -44,6 +44,7 @@ Some information to get you started! The three columns below take you through th
 * User specified column gives examples. These can be copy and pasted directly into the sidebar text input. To check outside of the app whether a specific site has such a feed look for the orange RSS symbol or enter "/feed" or "/rss" at the end of the URL. Alternatively enter it here and we'll do it for you.
 * Using the exclude words field in the sidebar adds those strings to the query however with a "-" prefixed.
 
+## Visualizations
 * Three visualizations appear after a search, along with suggested articles curated from aggregate lists of users who have been sharing similar material to your query.
 * The main visualization is an interactive graph built using the [agraph](https://github.com/ChrisChross/streamlit-agraph) component for Streamlit - thank you C.Klose for that. This graph has the following structure:
 

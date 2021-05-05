@@ -1,4 +1,5 @@
-Welcome to the Disinformation Tracking Tool  - [link](https://share.streamlit.io/lordlean/disinformation-tracker/main.py)
+# Welcome to the Disinformation Tracking Tool 
+[link](https://share.streamlit.io/lordlean/disinformation-tracker/main.py)
 
 Thanks for choosing to use this application. This tool was designed as part of project for an undergraduate computer science degree from the University of Sussex. The goal was to create an application that would allow its users to jump straight into examining the diffusion of news through the Twitter platform.  
 

@@ -13,3 +13,4 @@ nltk==3.6.2
 linkpreview==0.2.0
 beautifulsoup4==4.9.3
 scikit_learn==0.24.2
+lxml==4.6.3

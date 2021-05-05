@@ -35,8 +35,8 @@ cursor_args = {
     "result_type" : "mixed",
     "language" : "en",
     "exclude" : "",
-    "initial_search_count" : 500,
-    "url_search_count" : 50
+    "initial_search_count" : 50,
+    "url_search_count" : 5
 }
 
 arg_map = {
@@ -81,7 +81,7 @@ try:
     # Authenticate
     auth = tw.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
-    api = tw.API(auth, wait_on_rate_limit=True)
+    api = tw.API(auth, wait_on_rate_limit=False)
     cursor_args["api"] = api
 except:
     pass
@@ -313,10 +313,11 @@ def show_graph(event_dict):
         for url in event_dict["domains"][domain].keys():
             nodes.append(Node(id=url,size=500, color="#2b4717"))#, renderLabel=False))
             edges.append(Edge(source=domain, target=url, type="CURVED_SMOOTH", color="#a6865c", labelProperty="HasSpecificUrl"))
-            for timepoint in event_dict["domains"][domain][url]["RT Datetime"]:
-                timepoint_str = str(timepoint)
-                nodes.append(Node(id=timepoint_str, size=250, color="#653417", renderLabel=False))
-                edges.append(Edge(source=url, target=timepoint_str, type="CURVED_SMOOTH", labelProperty="PostsAtThisTime"))
+            if event_dict["domains"][domain][url]["RT Datetime"] is not None:
+                for timepoint in event_dict["domains"][domain][url]["RT Datetime"]:
+                    timepoint_str = str(timepoint)
+                    nodes.append(Node(id=timepoint_str, size=250, color="#653417", renderLabel=False))
+                    edges.append(Edge(source=url, target=timepoint_str, type="CURVED_SMOOTH", labelProperty="PostsAtThisTime"))
                 
     config = Config(width=3000, 
                     height=1000, 
@@ -412,7 +413,8 @@ search_col.markdown((""))
 search_col.markdown((""))
 if search_col.button("Search"):
     # Print check
-    st.write("Query Searched for: {}".format(query))
+    # st.write("Query Searched for: {}".format(query))
+    # st.write(cursor_args)
     for excluded_word in cursor_args["exclude"].split():
         for word in query.split():
             if word == excluded_word:
@@ -428,6 +430,9 @@ if search_col.button("Search"):
         except AttributeError:
             st.error("Unable to search - have you uploaded the required keys?")
             st.stop()
+        except tw.TweepError:
+            st.error("Unable to search - rate limit exceeded.")
+            st.stop()
         
 
     with analysis_graph_slot.beta_container():
@@ -435,8 +440,10 @@ if search_col.button("Search"):
         # st.write(cursor_args)
         st.text("")
         with st.spinner("Loading Graph..."):
-            show_graph(searched_item)
-
+            try:
+                show_graph(searched_item)
+            except TypeError:
+                st.error("Sorry your search returned 0 results. Please try a different query.")
     time_plot, radar_plot = analysis__plot_slot.beta_columns((2,1))
 
     plot_font_size = 14

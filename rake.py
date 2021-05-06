@@ -91,7 +91,6 @@ class Rake:
     curr = []
     for i, word in enumerate(wk_text):
       if word not in self.stopwords and word not in string.punctuation:
-        print(type(curr))
         curr.append(word)
         self.allwords.append(word)
         if i == len(wk_text)-1:

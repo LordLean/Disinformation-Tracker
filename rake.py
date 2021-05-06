@@ -2,6 +2,10 @@ import operator
 import re
 import string
 
+import operator
+import re
+import string
+
 class Rake:
 
   """
@@ -81,15 +85,16 @@ class Rake:
     """
     # Separate text by newlines, whitespace, punctuation and some regex delimiters.
     wk_text = ". ".join(self.text.split("\n"))
-    r = re.compile("\n|\s|[,;.-?!‘’']|^a-zA-Z]+".format(re.escape(string.punctuation+"‘’'")))
+    r = re.compile("\n|\s|[,;.-?!]|^a-zA-Z]+".format(re.escape(string.punctuation)))
     wk_text = r.split(wk_text)
     wk_text = [word.lower() for word in wk_text]
     curr = []
     for i, word in enumerate(wk_text):
       if word not in self.stopwords and word not in string.punctuation:
+        print(type(curr))
         curr.append(word)
         self.allwords.append(word)
-        if i != len(wk_text) - 1:
+        if i == len(wk_text)-1:
           curr = " ".join(curr)
           self.keywords.append(curr)
       else:

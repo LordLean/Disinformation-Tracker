@@ -279,6 +279,7 @@ search_item["query"] = query + " " + " ".join(exclude_words)
 zero_query = st.empty()
 analysis_graph_slot = st.empty()
 analysis__plot_slot = st.empty()
+suggested_articles_slot_title = st.empty()
 suggested_articles_slot = st.empty()
 ###########################################
 # Analysis Slot def
@@ -397,7 +398,6 @@ def get_sentiment_plot(event_dict):
     polar=dict(
       radialaxis=dict(
         visible=True,
-        # range=[0, maximum*2]
       )),
     showlegend=False
   )
@@ -449,7 +449,15 @@ if search_col.button("Search"):
     plot_font_size = 14
     with time_plot:
         fig = plotly_time_series(searched_item)
-        fig.update_layout(legend = dict(font = dict(size=plot_font_size)))
+        fig.update_layout(
+            title = dict(
+                text="Tweet Activity",
+                font=dict(
+                    size=24
+                )
+            ),
+            legend = dict(font = dict(size=plot_font_size))
+            )
         st.plotly_chart(fig,use_container_width=True, height=1200)
 
     with radar_plot:
@@ -459,11 +467,16 @@ if search_col.button("Search"):
             polar=dict(
             radialaxis=dict(
                 visible=False,
-                # range=[0, maximum*2]
             ),
             angularaxis=dict(
                 tickfont=dict(size=plot_font_size))),
-            showlegend=False
+            showlegend=False,
+            title = dict(
+                text="Tweet Sentiment",
+                font=dict(
+                    size=24
+                )
+            )
             )
             st.plotly_chart(fig, use_container_width=True)
         except ZeroDivisionError:
@@ -474,6 +487,8 @@ if search_col.button("Search"):
     ##########################################
     # Suggested articles
     ##########################################
+    with suggested_articles_slot_title.beta_container():
+        st.markdown("## Suggested Articles")
     suggested_news_col1, _, suggested_news_col2, _, suggested_news_col3 = suggested_articles_slot.beta_columns((8,1,8,1,8))
     suggested_articles = [articles_list for articles_list in searched_item["suggested_articles"].values()]
     suggested_articles = [item for mini in suggested_articles for item in mini]

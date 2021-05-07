@@ -431,7 +431,7 @@ if search_col.button("Search"):
             st.error("Unable to search - have you uploaded the required keys?")
             st.stop()
         except tw.TweepError as e:
-            st.error(e)
+#             st.error(e)
             st.error("Unable to search - rate limit exceeded.")
             st.stop()
         

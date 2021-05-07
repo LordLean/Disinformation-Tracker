@@ -36,7 +36,7 @@ cursor_args = {
     "language" : "en",
     "exclude" : "",
     "initial_search_count" : 50,
-    "url_search_count" : 5
+    "url_search_count" : 10
 }
 
 arg_map = {

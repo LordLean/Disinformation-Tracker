@@ -430,7 +430,8 @@ if search_col.button("Search"):
         except AttributeError:
             st.error("Unable to search - have you uploaded the required keys?")
             st.stop()
-        except tw.TweepError:
+        except tw.TweepError as e:
+            st.error(e)
             st.error("Unable to search - rate limit exceeded.")
             st.stop()
         

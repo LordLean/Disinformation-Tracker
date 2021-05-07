@@ -320,7 +320,7 @@ def show_graph(event_dict):
                     nodes.append(Node(id=timepoint_str, size=250, color="#653417", renderLabel=False))
                     edges.append(Edge(source=url, target=timepoint_str, type="CURVED_SMOOTH", labelProperty="PostsAtThisTime"))
                 
-    config = Config(width=3000, 
+    config = Config(width=2000, 
                     height=1000, 
                     directed=True,
                     nodeHighlightBehavior=True, 

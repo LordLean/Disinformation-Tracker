@@ -226,7 +226,7 @@ def event_active_users(event_dict, num=3):
   return tld_user_dict
 
 
-def get_suggested_articles(user_list,api,count=50):
+def get_suggested_articles(user_list,api,count=25):
   articles_list = []
   for user in user_list:
     statuses = tw.Cursor(api.user_timeline, id=user).items(count)

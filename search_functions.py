@@ -59,7 +59,7 @@ def url_parse(url):
 def twitter_search(query_, result_type, max_tweets, language, api):
   # API Search - https://docs.tweepy.org/en/latest/api.html - ctrl+f "Search Methods"
   tweets = tw.Cursor(api.search,
-                    q = query_,
+                    q = query_ + " filter:links",
                     result_type = result_type,
                     lang = language,
                     tweet_mode = "extended",

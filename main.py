@@ -310,14 +310,19 @@ def show_graph(event_dict):
     # Connect each domain node to the headline. 
     edges.extend([Edge(source=event_dict["headline"], target=node, type="CURVE_SMOOTH", labelProperty="HasDomainPosting") for node in domains])
     # Iterate through each domain, through each specific url contained within, for each datetime within url specific dataframes.
+    timestamp_node_colour = ""
     for domain in domains:
+        if domain.lower() in ["snopes.com", "factcheck.org", "poltifact.com", "truthorfiction.com"]:
+            timestamp_node_colour = "#F3722C"
+        else:
+            timestamp_node_colour = "#653417"
         for url in event_dict["domains"][domain].keys():
             nodes.append(Node(id=url,size=500, color="#2b4717"))#, renderLabel=False))
             edges.append(Edge(source=domain, target=url, type="CURVED_SMOOTH", color="#a6865c", labelProperty="HasSpecificUrl"))
             if event_dict["domains"][domain][url]["RT Datetime"] is not None:
                 for timepoint in event_dict["domains"][domain][url]["RT Datetime"]:
                     timepoint_str = str(timepoint)
-                    nodes.append(Node(id=timepoint_str, size=250, color="#653417", renderLabel=False))
+                    nodes.append(Node(id=timepoint_str, size=250, color=timestamp_node_colour, renderLabel=False))
                     edges.append(Edge(source=url, target=timepoint_str, type="CURVED_SMOOTH", labelProperty="PostsAtThisTime"))
                 
     config = Config(width=2000,

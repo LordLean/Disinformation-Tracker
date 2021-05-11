@@ -74,12 +74,6 @@ def twitter_search(query_, result_type, max_tweets, language, api):
     elif not hasattr(tweet, "retweeted_status") and tweet.entities["urls"]:
       tweet_info = [tweet.full_text, tweet.entities["urls"][0]["expanded_url"], tweet.created_at, tweet.id_str, tweet.user.id_str, tweet.user.location, tweet.lang, tweet.source, None, None, None, None, None, None, tweet.is_quote_status, hasattr(tweet, "retweeted_status"), tweet.retweet_count]
       final_list.append(tweet_info)
-#     elif hasattr(tweet, "retweeted_status") and not tweet.entities["urls"]:
-#       tweet_info = [tweet.full_text, None, tweet.created_at, tweet.id_str, tweet.user.id_str, tweet.user.location, tweet.lang, tweet.source, tweet.retweeted_status.created_at, tweet.retweeted_status.id_str, tweet.retweeted_status.user.id_str, tweet.retweeted_status.user.location, tweet.retweeted_status.lang, tweet.retweeted_status.source, tweet.is_quote_status, hasattr(tweet, "retweeted_status"), tweet.retweet_count]
-#       final_list.append(tweet_info)
-#     elif not hasattr(tweet, "retweeted_status") and not tweet.entities["urls"]:
-#       tweet_info = [tweet.full_text, None, tweet.created_at, tweet.id_str, tweet.user.id_str, tweet.user.location, tweet.lang, tweet.source, None, None, None, None, None, None, tweet.is_quote_status, hasattr(tweet, "retweeted_status"), tweet.retweet_count]
-#       final_list.append(tweet_info)
 
   # Create dataframe for specified above information.
   df = pd.DataFrame(final_list,columns=["Full Text", "Tweet Links", "RT Datetime", "RT Id", "RT User Handle", "RT User Location", "RT User Language", "RT User Source", "Orig Datetime", "Orig Tweet Id", "Orig User Handle", "Orig User Location", "Orig User Language", "Orig User Source", "IsQuoteRetweet", "IsRetweet", "RetweetCount"])

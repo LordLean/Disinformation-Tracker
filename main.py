@@ -590,7 +590,8 @@ with st.spinner("Loading News..."):
     except:
         news_user_specified = "factcheck.org"
     
-    num_items = 3
+    num_items = 5
+    
     for item in news_general[:num_items]:
         try:
             prev = get_link_preview(item["link"])

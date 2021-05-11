@@ -592,33 +592,39 @@ with st.spinner("Loading News..."):
     
     num_items = 3
     for item in news_general[:num_items]:
-        prev = get_link_preview(item["link"])
-        news_col1.image(prev["image"], width=300)
-        news_col1.markdown("""
-        ```
-        {}
-        ```
-        """.format(prev["title"]))
-        news_col1.markdown("""{}  [link]({})""".format(prev["description"],prev["link"]))
-        # news_col1.write(prev["description"])
-        # news_col1.write(prev["link"])
-        news_col1.write("")
-        news_col1.write("")
+        try:
+            prev = get_link_preview(item["link"])
+            news_col1.image(prev["image"], width=300)
+            news_col1.markdown("""
+            ```
+            {}
+            ```
+            """.format(prev["title"]))
+            news_col1.markdown("""{}  [link]({})""".format(prev["description"],prev["link"]))
+            # news_col1.write(prev["description"])
+            # news_col1.write(prev["link"])
+            news_col1.write("")
+            news_col1.write("")
+        except:
+            pass
 
 
     for item in news_fact_check[:num_items]:
-        prev = get_link_preview(item["link"])
-        news_col2.image(prev["image"], width=300)
-        news_col2.markdown("""
-        ```
-        {}
-        ```
-        """.format(prev["title"]))
-        news_col2.markdown("""{}  [link]({})""".format(prev["description"],prev["link"]))
-        # news_col2.write(prev["description"])
-        # news_col2.write(prev["link"])
-        news_col2.write("")
-        news_col2.write("")
+        try:
+            prev = get_link_preview(item["link"])
+            news_col2.image(prev["image"], width=300)
+            news_col2.markdown("""
+            ```
+            {}
+            ```
+            """.format(prev["title"]))
+            news_col2.markdown("""{}  [link]({})""".format(prev["description"],prev["link"]))
+            # news_col2.write(prev["description"])
+            # news_col2.write(prev["link"])
+            news_col2.write("")
+            news_col2.write("")
+        except:
+            pass
 
     if not news_user_specified:
         news_user_specified = "factcheck.org"

@@ -590,7 +590,7 @@ with st.spinner("Loading News..."):
     except:
         news_user_specified = "factcheck.org"
     
-    num_items = 5
+    num_items = 3
     for item in news_general[:num_items]:
         prev = get_link_preview(item["link"])
         news_col1.image(prev["image"], width=300)

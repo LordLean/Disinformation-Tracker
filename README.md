@@ -55,7 +55,7 @@ Some information to get you started! The three columns below take you through th
     |Topic Classification| Yellow| 2|
     |Domain Name| Light Green |3|
     |URL |Dark Green| 4|
-    |URL (fact-check) |Orange| 4|
+    |Datetime (fact-check) |Orange| 5|
     |Datetime of Tweet| Dark Red/Brown|5|
 
 * Individual Tweet objects and overly identifying content (i.e. text/userIDs) are not accessible - this was out of the scope the research project this was built for.

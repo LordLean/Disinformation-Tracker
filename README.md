@@ -1,6 +1,8 @@
 # Welcome to the Disinformation Tracking Tool 
 ## [link](https://share.streamlit.io/lordlean/disinformation-tracker/main.py)
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/LordLean/Disinformation-Tracker/disinformation-tracker/)
+
 Thanks for choosing to use this application. This tool was designed as part of project for an undergraduate computer science degree from the University of Sussex. The goal was to create an application that would allow its users to jump straight into examining the diffusion of news through the Twitter platform.  
 
 Specifically this project targets disinformation (deliberately deceptive false news) however the tool can be used to search for anything you please! The quering function that searches Twitter operates the same as it does within Twitter's applications - we just make it easier for you to specify what's relevant information to you!
